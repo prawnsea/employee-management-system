@@ -32,6 +32,9 @@ public class Employees {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+//        JLabel label = new JLabel();
+//        label.setIcon(new ImageIcon("D:\\tesda final task\\employee management system\\employee-management-system\\src\\gorlock.jpg"));
+//        frame.add(label);
     }
 
     // Databai connection
@@ -130,6 +133,15 @@ public class Employees {
             JOptionPane.showMessageDialog(mainPanel, "SQL/db error", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    public int rowIdentifier(String employeeIdStr){
+        for (int i = 0; i < table1.getRowCount(); i++){
+            if(table1.getValueAt(i,0).equals(employeeIdStr)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
 
     // Update employee in db
     public void updateEmployee(String employeeIdStr, String firstName, String lastName, String contactNumber, String salaryStr) {
@@ -146,7 +158,25 @@ public class Employees {
 
                 // Check the number of rows updated
                 if (rowUpdate > 0) {
-                    JOptionPane.showMessageDialog(mainPanel, "Employee updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(mainPanel, "updated na bai", "Success", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(mainPanel, "di makita id", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(mainPanel, "SQL/db error", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public void deleteEmployee(String employeeIdStr){
+        try {
+            String sql = "DELETE FROM employee_info WHERE employee_id = ?";
+            try (PreparedStatement pst = con.prepareStatement(sql)) {
+                pst.setString(1, employeeIdStr);
+                int rowUpdate = pst.executeUpdate();
+                // row check
+                if (rowUpdate > 0) {
+                    JOptionPane.showMessageDialog(mainPanel, "Employee deleted", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(mainPanel, "No employee found with the given ID", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -156,27 +186,8 @@ public class Employees {
             JOptionPane.showMessageDialog(mainPanel, "SQL/db error", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    public void deleteEmployee(){
-        try {
-            String sql = "DELETE FROM employee_info";
-            try (PreparedStatement pst = con.prepareStatement(sql)) {
-                int rowUpdate = pst.executeUpdate();
-                // row check
-                if (rowUpdate > 0) {
-                    JOptionPane.showMessageDialog(mainPanel, "employee deleted", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    DefaultTableModel model = (DefaultTableModel) table1.getModel();
-                    model.setRowCount(0);
-                    eraseInput();
-                } else {
-                    JOptionPane.showMessageDialog(mainPanel, "mali", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(mainPanel, "SQL/db error", "Error", JOptionPane.ERROR_MESSAGE);
-        }
 
-    }
+
     public void intFormatter(JFormattedTextField textField) {
         NumberFormatter intValidator = new NumberFormatter();
         intValidator.setValueClass(Integer.class);
@@ -258,8 +269,20 @@ public class Employees {
         deleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                deleteEmployee();
+                String employeeIdStr = searchInput.getText();
+                deleteEmployee(employeeIdStr);
+                eraseInput();
+                int rowIndex = rowIdentifier(employeeIdStr);
+                if(rowIndex >= 0){
+                    DefaultTableModel model = (DefaultTableModel) table1.getModel();
+                    model.removeRow(rowIndex);
+                }
+                else{
+                    JOptionPane.showMessageDialog(mainPanel, "select muna employee bai", "No row selected", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
+
+
     }
 }
