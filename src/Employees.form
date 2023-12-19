@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="9" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="838" height="305"/>
+      <xy x="20" y="20" width="854" height="305"/>
     </constraints>
     <properties>
       <font size="22"/>
@@ -47,16 +47,6 @@
           <text value="Employee Id: "/>
         </properties>
       </component>
-      <component id="ae070" class="javax.swing.JTextField" binding="idInput">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <foreground color="-9961243"/>
-        </properties>
-      </component>
       <component id="f1529" class="javax.swing.JTextField" binding="firstNameInput">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -70,26 +60,6 @@
       <component id="1da47" class="javax.swing.JTextField" binding="lastNameInput">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <foreground color="-9961243"/>
-        </properties>
-      </component>
-      <component id="2610e" class="javax.swing.JTextField" binding="contactNumberInput">
-        <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <foreground color="-9961243"/>
-        </properties>
-      </component>
-      <component id="7c991" class="javax.swing.JTextField" binding="salaryInput">
-        <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -126,7 +96,7 @@
         <properties>
           <foreground color="-9961243"/>
           <horizontalTextPosition value="4"/>
-          <text value="Search Employee"/>
+          <text value="Search Employee ID"/>
         </properties>
       </component>
       <component id="85ad0" class="javax.swing.JTextField" binding="searchInput">
@@ -139,22 +109,13 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="48205" class="javax.swing.JButton" binding="removeBtn">
+      <component id="48205" class="javax.swing.JButton" binding="deleteBtn">
         <constraints>
           <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <foreground color="-9961243"/>
           <text value="Remove Employee Information"/>
-        </properties>
-      </component>
-      <component id="70049" class="javax.swing.JButton" binding="updateBtn">
-        <constraints>
-          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <foreground color="-9961243"/>
-          <text value="Update Employee Information"/>
         </properties>
       </component>
       <component id="595f" class="javax.swing.JLabel" binding="regTitle">
@@ -205,6 +166,39 @@
           <foreground color="-16777216"/>
           <text value="Salary:"/>
         </properties>
+      </component>
+      <component id="70049" class="javax.swing.JButton" binding="updateBtn">
+        <constraints>
+          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-9961243"/>
+          <text value="Update Employee Information"/>
+        </properties>
+      </component>
+      <component id="4efb5" class="javax.swing.JTextField" binding="idInput">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="3b0d2" class="javax.swing.JTextField" binding="contactNumberInput">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="c6234" class="javax.swing.JTextField" binding="salaryInput">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
       </component>
     </children>
   </grid>
